@@ -26,11 +26,10 @@ func Me() (Peer, error) {
 	if err != nil {
 		return Peer{}, fmt.Errorf("ipn: failed to get tailscale interface: %w", err)
 	}
-	ops := runtime.GOOS
 	return Peer{
 		Host: host,
 		Addr: addr,
-		OS:   ops,
+		OS:   runtime.GOOS,
 	}, nil
 }
 
