@@ -50,3 +50,8 @@ func QueryForPeers() ([]Peer, error) {
 	}
 	return peers, nil
 }
+
+func (p *Peer) ListenOn(network, port string) (net.Listener, error) {
+	addr := net.JoinHostPort(p.Addr.String(), port)
+	return net.Listen(network, addr)
+}
